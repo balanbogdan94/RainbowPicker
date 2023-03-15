@@ -1,4 +1,5 @@
 import { Input, Label, useId } from "@fluentui/react-components";
+import { observer } from "mobx-react-lite";
 import React from "react";
 import { useGlobalState } from "../../App";
 import useDebounce from "../../hooks/useDebounce";
@@ -6,7 +7,7 @@ import ColorPicker from "./Components/ColorPicker";
 import { getStyles } from "./Content.style";
 
 const Content: React.FC = () => {
-  const { color, name, onNameChanged, onColorChanged } = useGlobalState();
+  const { color, name, onNameChanged } = useGlobalState();
   const style = getStyles();
   const inputId = useId("input");
   const [inputText, setInputText] = React.useState(name);
@@ -43,4 +44,4 @@ const Content: React.FC = () => {
   );
 };
 
-export default Content;
+export default observer(Content);

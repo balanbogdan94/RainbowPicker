@@ -1,4 +1,4 @@
-type RainbowColor = {
+export type RainbowColor = {
   name: string;
   hex: string;
 };

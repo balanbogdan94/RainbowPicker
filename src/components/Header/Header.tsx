@@ -3,8 +3,9 @@ import { getStyles } from "./Header.styles";
 import { makeStyles, Text } from "@fluentui/react-components";
 import { Person48Regular, Person28Regular } from "@fluentui/react-icons";
 import { useGlobalState } from "../../App";
+import { observer } from "mobx-react-lite";
 
-const Header: React.FC = () => {
+const HeaderBase: React.FC = () => {
   const { color, name } = useGlobalState();
   const style = getStyles();
   return (
@@ -17,5 +18,5 @@ const Header: React.FC = () => {
     </header>
   );
 };
-
+const Header = observer(HeaderBase);
 export default Header;
