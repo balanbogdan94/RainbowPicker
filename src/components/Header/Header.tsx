@@ -2,8 +2,10 @@ import React from "react";
 import { getStyles } from "./Header.styles";
 import { makeStyles, Text } from "@fluentui/react-components";
 import { Person48Regular, Person28Regular } from "@fluentui/react-icons";
+import { useGlobalState } from "../../App";
 
-const Header: React.FC<{ name: string; color: string }> = ({ name, color }) => {
+const Header: React.FC = () => {
+  const { color, name } = useGlobalState();
   const style = getStyles();
   return (
     <header className={style.headerContainer}>

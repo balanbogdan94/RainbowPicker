@@ -1,27 +1,21 @@
 import { Input, Label, useId } from "@fluentui/react-components";
 import React from "react";
+import { useGlobalState } from "../../App";
 import useDebounce from "../../hooks/useDebounce";
 import ColorPicker from "./Components/ColorPicker";
 import { getStyles } from "./Content.style";
-type TContentProps = {
-  name: string;
-  color: string;
-  onNameChanged: (name: string) => void;
-  onColorChanged: (color: string) => void;
-};
-const Content: React.FC<TContentProps> = ({
-  name,
-  onNameChanged,
-  color,
-  onColorChanged,
-}) => {
+
+const Content: React.FC = () => {
+  const { color, name, onNameChanged, onColorChanged } = useGlobalState();
   const style = getStyles();
   const inputId = useId("input");
   const [inputText, setInputText] = React.useState(name);
   const debouncedName = useDebounce(inputText, 500);
 
   React.useEffect(() => {
-    onNameChanged(debouncedName);
+    if (onNameChanged) {
+      onNameChanged(debouncedName ?? "");
+    }
   }, [debouncedName]);
 
   return (
@@ -44,7 +38,7 @@ const Content: React.FC<TContentProps> = ({
           onChange={(e) => setInputText(e.target.value)}
         />
       </div>
-      <ColorPicker selectedColor={color} onColorChanged={onColorChanged} />
+      <ColorPicker />
     </div>
   );
 };

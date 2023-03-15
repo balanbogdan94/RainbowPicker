@@ -1,8 +1,19 @@
+import React from "react";
 import { useState } from "react";
 import "./App.scss";
 import Content from "./components/Content/Content";
 import Header from "./components/Header";
 import { rainbowColors } from "./Model/rainbowColors";
+
+type GlobalState = {
+  color: string;
+  name: string;
+  onNameChanged: (name: string) => void;
+  onColorChanged: (color: string) => void;
+};
+
+export const GlobalStateContext = React.createContext<Partial<GlobalState>>({});
+export const useGlobalState = () => React.useContext(GlobalStateContext);
 
 function App() {
   const [color, setColor] = useState<string>(rainbowColors[0].hex);
@@ -10,20 +21,21 @@ function App() {
   const onNameChanged = (name: string) => {
     setName(name);
   };
-
   const onColorChanged = (color: string) => {
     setColor(color);
   };
 
   return (
-    <>
-      <Header name={name} color={color} />
-      <Content
-        name={name}
-        onNameChanged={onNameChanged}
-        color={color}
-        onColorChanged={onColorChanged}
-      />
+    <GlobalStateContext.Provider
+      value={{
+        color,
+        name,
+        onNameChanged,
+        onColorChanged,
+      }}
+    >
+      <Header />
+      <Content />
       <footer>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
           <path
@@ -34,7 +46,7 @@ function App() {
         </svg>
         <div></div>
       </footer>
-    </>
+    </GlobalStateContext.Provider>
   );
 }
 

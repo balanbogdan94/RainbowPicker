@@ -2,18 +2,12 @@ import React from "react";
 import { getStyles } from "./ColorPicker.style";
 import { rainbowColors } from "./../../../Model/rainbowColors";
 import { Button, mergeClasses } from "@fluentui/react-components";
-type TColorPickerProps = {
-  selectedColor: string;
-  onColorChanged: (color: string) => void;
-};
+import { useGlobalState } from "../../../App";
 
-const ColorPicker: React.FC<TColorPickerProps> = ({
-  selectedColor,
-  onColorChanged,
-}) => {
+const ColorPicker = () => {
+  const { color, onColorChanged } = useGlobalState();
   const classNames = getStyles();
   const selectedStyle = mergeClasses(classNames.dot, classNames.selectedDOT);
-  console.log(selectedColor);
   return (
     <ul className={classNames.colorPickerContainer}>
       {rainbowColors.map((c) => (
@@ -21,11 +15,9 @@ const ColorPicker: React.FC<TColorPickerProps> = ({
           <div style={{ color: c.hex }} className={classNames.colorItem}>
             <Button
               style={{ backgroundColor: c.hex }}
-              className={
-                c.hex === selectedColor ? selectedStyle : classNames.dot
-              }
+              className={c.hex === color ? selectedStyle : classNames.dot}
               onClick={() => {
-                onColorChanged(c.hex);
+                onColorChanged && onColorChanged(c.hex);
               }}
             />
             <h3>{c.name}</h3>
