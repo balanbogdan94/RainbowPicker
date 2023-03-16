@@ -10,7 +10,6 @@ import { Store } from "./store/globalStore";
 export const GlobalStateContext = React.createContext<Partial<Store>>({});
 const store = new Store();
 function App() {
-  console.log(store.color);
   return (
     <GlobalStateContext.Provider value={store}>
       <Header />

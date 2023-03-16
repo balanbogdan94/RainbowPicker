@@ -17,7 +17,6 @@ export class Store {
   }
 
   onColorChanged = (color: RainbowColor) => {
-    debugger;
     this.pColor = color.hex;
   };
 
