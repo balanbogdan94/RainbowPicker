@@ -4,7 +4,7 @@ import { CSSProperties } from "react";
 export const getStyles = makeStyles({
   headerContainer: {
     minHeight: "75px",
-    backgroundColor: "#454545",
+    backgroundColor: "#f5ebd7",
     color: "#f2f2f2",
     ...shorthands.padding("0", "0.5rem"),
     display: "flex",

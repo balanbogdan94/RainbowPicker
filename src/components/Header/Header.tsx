@@ -7,6 +7,7 @@ import { useGlobalState } from "../../App";
 const Header: React.FC = () => {
   const { color, name } = useGlobalState();
   const style = getStyles();
+  console.log("Hello from Header.tsx");
   return (
     <header className={style.headerContainer}>
       <Text className={style.headerText}>Rainbow color picker</Text>
