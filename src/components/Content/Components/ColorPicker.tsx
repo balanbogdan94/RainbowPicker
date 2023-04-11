@@ -12,7 +12,7 @@ const ColorPicker = () => {
   return (
     <ul className={classNames.colorPickerContainer}>
       {rainbowColors.map((c) => (
-        <li>
+        <li key={c.name}>
           <div style={{ color: c.hex }} className={classNames.colorItem}>
             <Button
               style={{ backgroundColor: c.hex }}
