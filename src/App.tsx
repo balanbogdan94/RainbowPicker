@@ -36,7 +36,7 @@ function App() {
 			}}>
 			<Header />
 			<Content />
-			<Footer color={color} />
+			<Footer />
 		</GlobalStateContext.Provider>
 	);
 }
