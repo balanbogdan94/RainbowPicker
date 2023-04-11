@@ -5,6 +5,7 @@ import { Person48Regular, Person28Regular } from "@fluentui/react-icons";
 
 const Header: React.FC<{ name: string; color: string }> = ({ name, color }) => {
   const style = getStyles();
+  console.log("Hello from Header.tsx");
   return (
     <header className={style.headerContainer}>
       <Text className={style.headerText}>Rainbow color picker</Text>
