@@ -1,7 +1,8 @@
 import React from 'react';
 import { useGlobalState } from '../../App';
+import { observer } from 'mobx-react-lite';
 
-const Footer: React.FC = () => {
+const FooterBase: React.FC = () => {
 	const { color } = useGlobalState();
 	console.log('Hello from Footer.tsx');
 	return (
@@ -16,4 +17,5 @@ const Footer: React.FC = () => {
 	);
 };
 
+const Footer = observer(FooterBase);
 export default Footer;
