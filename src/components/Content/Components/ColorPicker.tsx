@@ -13,7 +13,6 @@ const ColorPicker: React.FC<TColorPickerProps> = ({
 }) => {
   const classNames = getStyles();
   const selectedStyle = mergeClasses(classNames.dot, classNames.selectedDOT);
-  console.log(selectedColor);
   return (
     <ul className={classNames.colorPickerContainer}>
       {rainbowColors.map((c) => (
